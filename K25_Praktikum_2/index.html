@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>IC-LABS Network Center</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #10213d;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           HEADER
+        ========================== */
+
+        header {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #dce4ee;
+        }
+
+        .nav {
+            width: 90%;
+            max-width: 1180px;
+            margin: auto;
+            height: 74px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #0b63f6;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(11, 99, 246, 0.18);
+        }
+
+        .brand-icon:before {
+            content: "";
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border: 3px solid white;
+            border-radius: 50%;
+            left: 10px;
+            top: 10px;
+        }
+
+        .brand-icon:after {
+            content: "";
+            position: absolute;
+            width: 3px;
+            height: 8px;
+            background: white;
+            left: 18px;
+            top: 4px;
+        }
+
+        .brand-title {
+            font-weight: bold;
+            font-size: 19px;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-title span {
+            color: #0b63f6;
+        }
+
+        .menu a {
+            margin-left: 28px;
+            color: #40516d;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            color: #0b63f6;
+        }
+
+        .nav-button {
+            padding: 11px 19px;
+            background: #0b63f6;
+            color: white !important;
+            border-radius: 8px;
+        }
+
+        /* =========================
+           HERO
+        ========================== */
+
+        .hero {
+            min-height: 600px;
+            position: relative;
+            overflow: hidden;
+            background: #07182f;
+            color: white;
+        }
+
+        .hero-decoration-one {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 1px solid rgba(61, 182, 255, 0.15);
+            border-radius: 50%;
+            right: -150px;
+            top: -190px;
+        }
+
+        .hero-decoration-two {
+            position: absolute;
+            width: 330px;
+            height: 330px;
+            border: 1px solid rgba(61, 182, 255, 0.15);
+            border-radius: 50%;
+            right: -30px;
+            top: -80px;
+        }
+
+        .hero-line {
+            position: absolute;
+            width: 500px;
+            height: 1px;
+            background: rgba(53, 175, 255, 0.2);
+            right: 80px;
+            bottom: 120px;
+            transform: rotate(-20deg);
+        }
+
+        .hero-container {
+            width: 90%;
+            max-width: 1180px;
+            margin: auto;
+            padding-top: 95px;
+            position: relative;
+            z-index: 2;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-left {
+            width: 55%;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 7px 11px;
+            border: 1px solid #29537d;
+            border-radius: 6px;
+            color: #65c4ff;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 54px;
+            line-height: 1.08;
+            letter-spacing: -2px;
+            max-width: 650px;
+        }
+
+        .hero h1 span {
+            color: #4abfff;
+        }
+
+        .hero-description {
+            margin-top: 24px;
+            max-width: 590px;
+            color: #b8c8dc;
+            font-size: 16px;
+        }
+
+        .hero-buttons {
+            margin-top: 34px;
+        }
+
+        .button-primary,
+        .button-secondary {
+            display: inline-block;
+            padding: 14px 23px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .button-primary {
+            background: #0b63f6;
+            color: white;
+        }
+
+        .button-primary:hover {
+            background: #287bff;
+        }
+
+        .button-secondary {
+            border: 1px solid #3e5878;
+            color: #e3edf8;
+        }
+
+        .button-secondary:hover {
+            border-color: #5cc3ff;
+            color: #5cc3ff;
+        }
+
+        /* =========================
+           NETWORK PANEL
+        ========================== */
+
+        .network-panel {
+            width: 38%;
+            min-height: 350px;
+            border: 1px solid #29415e;
+            background: #0b1f39;
+            border-radius: 18px;
+            padding: 23px;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+        }
+
+        .network-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #203955;
+        }
+
+        .network-title {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .status {
+            font-size: 11px;
+            color: #45d68b;
+            background: #102f2e;
+            padding: 6px 10px;
+            border-radius: 20px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            display: inline-block;
+            border-radius: 50%;
+            background: #3fe18c;
+            margin-right: 5px;
+        }
+
+        .network-map {
+            position: relative;
+            height: 230px;
+            margin-top: 15px;
+        }
+
+        .server {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 2px solid #35b9ff;
+            background: #0b2a4a;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -32px;
+            margin-top: -32px;
+            text-align: center;
+            line-height: 64px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #60c8ff;
+            z-index: 3;
+        }
+
+        .node {
+            width: 70px;
+            height: 35px;
+            position: absolute;
+            background: #122c4a;
+            border: 1px solid #284c6d;
+            border-radius: 6px;
+            text-align: center;
+            line-height: 35px;
+            font-size: 10px;
+            color: #bcd1e8;
+            z-index: 2;
+        }
+
+        .node-1 {
+            left: 12px;
+            top: 34px;
+        }
+
+        .node-2 {
+            right: 12px;
+            top: 34px;
+        }
+
+        .node-3 {
+            left: 10px;
+            bottom: 25px;
+        }
+
+        .node-4 {
+            right: 10px;
+            bottom: 25px;
+        }
+
+        .connection {
+            height: 1px;
+            background: #20507a;
+            position: absolute;
+        }
+
+        .c1 {
+            width: 120px;
+            left: 63px;
+            top: 84px;
+            transform: rotate(26deg);
+        }
+
+        .c2 {
+            width: 120px;
+            right: 63px;
+            top: 84px;
+            transform: rotate(-26deg);
+        }
+
+        .c3 {
+            width: 120px;
+            left: 62px;
+            bottom: 71px;
+            transform: rotate(-26deg);
+        }
+
+        .c4 {
+            width: 120px;
+            right: 62px;
+            bottom: 71px;
+            transform: rotate(26deg);
+        }
+
+        /* =========================
+           STATS
+        ========================== */
+
+        .stats {
+            width: 90%;
+            max-width: 1180px;
+            margin: -47px auto 0;
+            background: white;
+            border: 1px solid #e1e7ef;
+            border-radius: 14px;
+            position: relative;
+            z-index: 5;
+            box-shadow: 0 15px 35px rgba(16, 33, 61, 0.07);
+
+            display: flex;
+        }
+
+        .stat {
+            flex: 1;
+            padding: 25px 30px;
+            border-right: 1px solid #e5eaf0;
+        }
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+        .stat-number {
+            font-size: 27px;
+            font-weight: bold;
+            color: #10213d;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #7b899c;
+            margin-top: 2px;
+        }
+
+        /* =========================
+           SERVICES
+        ========================== */
+
+        .section {
+            width: 90%;
+            max-width: 1180px;
+            margin: auto;
+            padding: 90px 0;
+        }
+
+        .section-small-title {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: #0b63f6;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .section h2 {
+            font-size: 37px;
+            letter-spacing: -1.5px;
+            max-width: 600px;
+        }
+
+        .section-description {
+            max-width: 570px;
+            margin-top: 13px;
+            color: #718096;
+            font-size: 14px;
+        }
+
+        .cards {
+            margin-top: 45px;
+            display: flex;
+            gap: 18px;
+        }
+
+        .card {
+            flex: 1;
+            background: #ffffff;
+            border: 1px solid #e0e7ef;
+            border-radius: 12px;
+            padding: 26px;
+            min-height: 220px;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            margin-top: -5px;
+            border-color: #a8cfff;
+            box-shadow: 0 15px 30px rgba(18, 48, 85, 0.08);
+        }
+
+        .card-number {
+            color: #0b63f6;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 13px;
+            color: #738196;
+            line-height: 1.7;
+        }
+
+        .card-link {
+            display: inline-block;
+            margin-top: 17px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #0b63f6;
+        }
+
+        /* =========================
+           INFO AREA
+        ========================== */
+
+        .info-area {
+            background: #0b1b31;
+            color: white;
+        }
+
+        .info-container {
+            width: 90%;
+            max-width: 1180px;
+            margin: auto;
+            padding: 70px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .info-container h2 {
+            font-size: 34px;
+            max-width: 560px;
+            letter-spacing: -1px;
+        }
+
+        .info-container h2 span {
+            color: #4abfff;
+        }
+
+        .info-container p {
+            max-width: 420px;
+            color: #a9bbce;
+            font-size: 14px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #071426;
+            color: #71859d;
+            padding: 30px 0;
+            font-size: 12px;
+        }
+
+        .footer-container {
+            width: 90%;
+            max-width: 1180px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .footer-name {
+            color: #c8d4e3;
+            font-weight: bold;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================== */
+
+        @media screen and (max-width: 900px) {
+
+            .menu {
+                display: none;
+            }
+
+            .hero-container {
+                display: block;
+                padding-top: 70px;
+                padding-bottom: 100px;
+            }
+
+            .hero-left {
+                width: 100%;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .network-panel {
+                width: 100%;
+                margin-top: 60px;
+            }
+
+            .stats {
+                display: block;
+            }
+
+            .stat {
+                border-right: none;
+                border-bottom: 1px solid #e5eaf0;
+            }
+
+            .cards {
+                display: block;
+            }
+
+            .card {
+                margin-bottom: 15px;
+            }
+
+            .info-container {
+                display: block;
+            }
+
+            .info-container p {
+                margin-top: 25px;
+            }
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================== -->
+
+<header>
+    <div class="nav">
+
+        <div class="brand">
+
+            <div class="brand-title">
+                IC-<span>LABS</span>
+            </div>
+
+        </div>
+
+        <div class="menu">
+            <a href="#home">Beranda</a>
+            <a href="#services">Praktikum</a>
+            <a href="#network">Infrastruktur</a>
+            <a href="#about">Tentang Lab</a>
+            <a href="#contact" class="nav-button">
+                Lab Network
+            </a>
+        </div>
+
+    </div>
+</header>
+
+
+
+<!-- =========================
+     HERO
+========================== -->
+
+<section class="hero" id="home">
+
+    <div class="hero-decoration-one"></div>
+    <div class="hero-decoration-two"></div>
+    <div class="hero-line"></div>
+
+    <div class="hero-container">
+
+        <!-- LEFT -->
+
+        <div class="hero-left">
+
+            <div class="eyebrow">
+                COMPUTER SCIENCE LABORATORY
+            </div>
+
+            <h1>
+                Infrastructure for
+                <span>Learning, Research</span>
+                & Innovation.
+            </h1>
+
+            <p class="hero-description">
+                Pusat layanan dan infrastruktur laboratorium komputer
+                untuk mendukung praktikum, eksperimen jaringan,
+                pengembangan perangkat lunak, riset, dan pembelajaran
+                teknologi informasi.
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#services" class="button-primary">
+                    Explore Laboratory →
+                </a>
+
+                <a href="#network" class="button-secondary">
+                    Network Status
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- NETWORK PANEL -->
+
+        <div class="network-panel" id="network">
+
+            <div class="network-header">
+
+                <div class="network-title">
+                    Laboratory Network
+                </div>
+
+                <div class="status">
+                    <span class="status-dot"></span>
+                    SYSTEM ONLINE
+                </div>
+
+            </div>
+
+
+            <div class="network-map">
+
+                <div class="connection c1"></div>
+                <div class="connection c2"></div>
+                <div class="connection c3"></div>
+                <div class="connection c4"></div>
+
+                <div class="node node-1">
+                    PC LAB
+                </div>
+
+                <div class="node node-2">
+                    ROUTER
+                </div>
+
+                <div class="node node-3">
+                    SWITCH
+                </div>
+
+                <div class="node node-4">
+                    CLIENT
+                </div>
+
+                <div class="server">
+                    SERVER
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     STATS
+========================== -->
+
+<div class="stats">
+
+    <div class="stat">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">
+            Server Availability
+        </div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-number">04</div>
+        <div class="stat-label">
+            Laboratory Rooms
+        </div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-number">120+</div>
+        <div class="stat-label">
+            Workstations
+        </div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-number">1 Gbps</div>
+        <div class="stat-label">
+            Internal Network
+        </div>
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     SERVICES
+========================== -->
+
+<section class="section" id="services">
+
+    <div class="section-small-title">
+        LABORATORY ECOSYSTEM
+    </div>
+
+    <h2>
+        Satu Infrastruktur untuk
+        Berbagai Kebutuhan Komputasi.
+    </h2>
+
+    <p class="section-description">
+        Infrastruktur laboratorium dirancang sebagai lingkungan
+        pembelajaran untuk jaringan komputer, pengembangan perangkat
+        lunak, komputasi, dan eksperimen teknologi.
+    </p>
+
+
+    <div class="cards">
+
+        <div class="card">
+
+            <div class="card-number">
+                01 / NETWORK
+            </div>
+
+            <h3>
+                Network Laboratory
+            </h3>
+
+            <p>
+                Praktikum routing, switching, VLAN, DHCP,
+                DNS, HTTP Server dan simulasi topologi
+                jaringan menggunakan Cisco.
+            </p>
+
+            <a class="card-link" href="#">
+                OPEN MODULE →
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                02 / SERVER
+            </div>
+
+            <h3>
+                Server Infrastructure
+            </h3>
+
+            <p>
+                Infrastruktur server untuk layanan web,
+                basis data, penyimpanan internal serta
+                eksperimen administrasi sistem.
+            </p>
+
+            <a class="card-link" href="#">
+                VIEW SERVER →
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                03 / DEVELOPMENT
+            </div>
+
+            <h3>
+                Software Engineering
+            </h3>
+
+            <p>
+                Lingkungan pembelajaran pemrograman,
+                pengembangan aplikasi web, mobile dan
+                sistem terdistribusi.
+            </p>
+
+            <a class="card-link" href="#">
+                VIEW RESOURCES →
+            </a>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                04 / RESEARCH
+            </div>
+
+            <h3>
+                Research Computing
+            </h3>
+
+            <p>
+                Fasilitas eksperimen untuk penelitian,
+                kecerdasan buatan, keamanan sistem,
+                dan teknologi komputasi.
+            </p>
+
+            <a class="card-link" href="#">
+                EXPLORE RESEARCH →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     INFORMATION
+========================== -->
+
+<section class="info-area" id="about">
+
+    <div class="info-container">
+
+        <h2>
+            Build. Connect. Experiment.
+            <span>Learn by Doing.</span>
+        </h2>
+
+        <p>
+            IC-LABS merupakan lingkungan komputasi yang
+            menghubungkan mahasiswa, perangkat jaringan,
+            server dan teknologi dalam satu ekosistem
+            pembelajaran praktis.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================== -->
+
+<footer id="contact">
+
+    <div class="footer-container">
+
+        <div class="footer-name">
+            IC-LABS / COMPUTER LABORATORY
+        </div>
+
+        <div>
+            Internal Network • HTTP Service
+        </div>
+
+    </div>
+
+</footer>
+
+
+</body>
+</html>
